@@ -20,9 +20,12 @@ class Game:
 		self.initialized = True
 
 	def enter(self, default_player_credits=100):
-		user_name = MessageGetter.get_order(order_type='user_name')
-		if isinstance(user_name, GameExiter):
-			self.exit()
+		while True:
+			user_name = MessageGetter.get_order(order_type='user_name')
+			if isinstance(user_name, GameExiter):
+				self.exit()
+				continue
+			break
 
 		## 数据文件不存在时, 直接新建数据
 		if os.path.exists(f'{user_name}.json'):
