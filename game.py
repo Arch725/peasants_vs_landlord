@@ -91,9 +91,6 @@ class Game:
 		person = self.people.get_player()
 		MessagePoster.post_hint(hint_type='player_show_cards', unshowed_cards=str(person.cards))
 
-		## 展示地主应得的3张底牌
-		MessagePoster.post_hint(hint_type='show_landlord_cards', landlord_cards=str(self.all_cards))
-
 		## 叫地主的次数
 		decision_cnt = 0
 
@@ -149,6 +146,17 @@ class Game:
 		person.next.set_identity('peasant')
 		person.next.next.set_identity('peasant')
 
+		## 宣布地主
+		MessagePoster.post_hint(
+			hint_type='announce_landlord', 
+			landlord_name=person.output_name, 
+			peasant1_name=person.next.output_name, 
+			peasant2_name=person.next.next.output_name
+		)
+
+		## 展示地主应得的3张底牌
+		MessagePoster.post_hint(hint_type='show_landlord_cards', landlord_cards=str(self.all_cards))
+
 		## 把3张底牌给地主
 		self.send_landlord_cards(person)
 
@@ -162,13 +170,7 @@ class Game:
 		## 最终的地主分数就是该局的分数
 		self.game_credits = last_landlord_score
 
-		## 宣布地主以及本局的分数
-		MessagePoster.post_hint(
-			hint_type='announce_landlord', 
-			landlord_name=person.output_name, 
-			peasant1_name=person.next.output_name, 
-			peasant2_name=person.next.next.output_name
-		)
+		## 宣布本局的分数
 		MessagePoster.post_hint(hint_type='announce_game_credits', game_credits=str(self.game_credits))	
 
 	def deal_cards(self):
