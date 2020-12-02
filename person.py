@@ -53,11 +53,14 @@ class Player(Person):
 
 			## 如果玩家要不起/不要, 则返回None
 			if raw_order == 'p':
+
+				## 有牌权出牌不能跳过
 				if last_cards is not None:
 					MessagePoster.post_hint(hint_type='person_abandon_dealing_cards', output_name=self.output_name)
+					return
 				else:
 					MessagePoster.post_hint(hint_type='player_can_not_skip_deal_cards_without_last_cards')
-				return
+					continue
 
 			undealed_cards = Cards([Card(pattern) for pattern in raw_order])
 
