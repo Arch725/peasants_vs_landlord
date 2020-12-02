@@ -17,7 +17,7 @@ class MessageGetter:
 	'confirm_exit': '是否确实要退出(y/n): ',
 	'save_data': '是否保存现有积分(y/n): ',
 	'overload_data': '用户已存在, 是否覆盖数据(y/n): ',
-	'landlord_score': '您地主叫几分(最少叫min_landlord_score分, 输入"p"跳过本轮)?',
+	'landlord_score': '您地主叫几分(最少叫min_landlord_score分, 最多叫3分, 输入"p"跳过本轮)?',
 	'continue_game': '是否继续游戏(y/n)?'
 	}
 
