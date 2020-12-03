@@ -23,7 +23,7 @@ class MessageGetter:
 
 	legal_pattern = {
 	'deal_cards': re.compile('^([23456789+JQKAmM]+|p)$'),
-	'user_name': re.compile('^[a-zA-Z]+[a-zA-Z_]*'),
+	'user_name': re.compile('^[a-zA-Z]+[a-zA-Z_]*$'),
 	'confirm_exit': re.compile('^[yn]{1}$'),
 	'save_data': re.compile('^[yn]{1}$'),
 	'overload_data': re.compile('^[yn]{1}$'),
