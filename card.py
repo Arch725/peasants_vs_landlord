@@ -574,7 +574,7 @@ class Cards:
 			## 对于三牌, 不需要检查chain_length, 因为任意长度都合法(不像双牌, 链长为2时就不合法)
 			while len([k for k in self if k == card.next]) == 3 and card.next <= Card('A'):
 				cards_block += card.next * 3
-				sorted_cards_data.remove((card, 3))
+				sorted_cards_data.remove((card.next, 3))
 				chain_length += 1
 				card = card.next
 				
