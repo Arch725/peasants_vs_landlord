@@ -133,7 +133,7 @@ class Robot(Person):
 
 	def deal_landlord_score(self, last_landlord_score):
 		if self.landlord_score is None:
-			self.landlord_score = self.cards.cal_confidence()
+			self.landlord_score = min(self.cards.cal_confidence(), 3)
 		if self.landlord_score > last_landlord_score:
 			MessagePoster.post_hint(hint_type='person_gave_landlord_score', output_name=self.output_name, landlord_score=str(self.landlord_score))
 			return self.landlord_score
